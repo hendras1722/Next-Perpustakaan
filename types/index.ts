@@ -1,3 +1,11 @@
+
+export interface JenBuku {
+	id: string;
+	jenis_buku: string;
+	deskripsi: string;
+	updated_at: string;
+}
+
 export interface Buku {
 	id?: string;
 	id_buku: string;

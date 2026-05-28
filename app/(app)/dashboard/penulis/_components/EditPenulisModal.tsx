@@ -55,11 +55,11 @@ export function EditPenulisModal({ data }: { data: Penulis }) {
 					</div>
 					<div className="space-y-2">
 						<label htmlFor={`edit-alamat-${data.id}`} className="text-sm font-medium">Alamat</label>
-						<Input id={`edit-alamat-${data.id}`} name="alamat_penulis" defaultValue={data.alamat_penulis} required />
+						<Input id={`edit-alamat-${data.id}`} name="alamat_penulis" defaultValue={state?.inputs?.alamat_penulis ?? data.alamat_penulis} required />
 					</div>
 					<div className="space-y-2">
 						<label htmlFor={`edit-deskripsi-${data.id}`} className="text-sm font-medium">Deskripsi</label>
-						<Input id={`edit-deskripsi-${data.id}`} name="deskripsi" defaultValue={data.deskripsi} />
+						<Input id={`edit-deskripsi-${data.id}`} name="deskripsi" defaultValue={state?.inputs?.deskripsi ?? data.deskripsi} />
 					</div>
 
 					{!state?.success && state?.message && (

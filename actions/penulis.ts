@@ -17,21 +17,23 @@ export async function getPenulis(query: string = "") {
 
 export async function createPenulis(prevState: unknown, formData: FormData) {
 	const penulis_buku = formData.get("penulis_buku") as string;
-	const biografi = formData.get("biografi") as string;
+	const alamat_penulis = formData.get("alamat_penulis") as string;
+	const email_penulis = formData.get("email_penulis") as string;
+	const deskripsi = formData.get("deskripsi") as string;
 
-	const inputs = { penulis_buku, biografi };
+	const inputs = { penulis_buku, alamat_penulis, email_penulis, deskripsi };
 
 	try {
-		const res = await fetchApi("/api/v1/admin/buku/penulis/create", {
+		const res = await fetchApi("/api/v1/admin/buku/author/create", {
 			method: "POST",
 			body: JSON.stringify(inputs),
 		});
 		const result = await res.json();
-		
+
 		if (!res.ok || result.error) {
 			return { success: false, message: result.msg || "Failed to create", inputs };
 		}
-		
+
 		revalidatePath("/dashboard/penulis");
 		return { success: true, message: "Created successfully" };
 	} catch (error) {
@@ -42,21 +44,23 @@ export async function createPenulis(prevState: unknown, formData: FormData) {
 export async function updatePenulis(prevState: unknown, formData: FormData) {
 	const id = formData.get("id") as string;
 	const penulis_buku = formData.get("penulis_buku") as string;
-	const biografi = formData.get("biografi") as string;
+	const alamat_penulis = formData.get("alamat_penulis") as string;
+	const email_penulis = formData.get("email_penulis") as string;
+	const deskripsi = formData.get("deskripsi") as string;
 
-	const inputs = { penulis_buku, biografi };
+	const inputs = { penulis_buku, alamat_penulis, email_penulis, deskripsi };
 
 	try {
-		const res = await fetchApi("/api/v1/admin/buku/penulis/update", {
+		const res = await fetchApi("/api/v1/admin/buku/author/update", {
 			method: "PUT",
 			body: JSON.stringify({ id, ...inputs }),
 		});
 		const result = await res.json();
-		
+
 		if (!res.ok || result.error) {
 			return { success: false, message: result.msg || "Failed to update", inputs };
 		}
-		
+
 		revalidatePath("/dashboard/penulis");
 		return { success: true, message: "Updated successfully" };
 	} catch (error) {
@@ -71,7 +75,7 @@ export async function deletePenulis(id: string) {
 			body: JSON.stringify({ id }),
 		});
 		const result = await res.json();
-		
+
 		if (res.ok && !result.error) {
 			revalidatePath("/dashboard/penulis");
 			return { success: true, message: "Deleted successfully" };

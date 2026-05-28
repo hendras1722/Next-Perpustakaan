@@ -51,20 +51,16 @@ export function AddPenulisModal() {
 						<Input id="penulis_buku" name="penulis_buku" defaultValue={state?.inputs?.penulis_buku || ""} required />
 					</div>
 					<div className="space-y-2">
-						<label htmlFor="biografi" className="text-sm font-medium">Biografi</label>
-						<Input id="biografi" name="biografi" defaultValue={state?.inputs?.biografi || ""} />
-					</div>
-					<div className="space-y-2">
 						<label htmlFor="email_penulis" className="text-sm font-medium">Email</label>
-						<Input id="email_penulis" name="email_penulis" type="email" required />
+						<Input id="email_penulis" name="email_penulis" type="email" defaultValue={state?.inputs?.email_penulis || ""} required />
 					</div>
 					<div className="space-y-2">
 						<label htmlFor="alamat_penulis" className="text-sm font-medium">Alamat</label>
-						<Input id="alamat_penulis" name="alamat_penulis" required />
+						<Input id="alamat_penulis" name="alamat_penulis" defaultValue={state?.inputs?.alamat_penulis || ""} required />
 					</div>
 					<div className="space-y-2">
 						<label htmlFor="deskripsi" className="text-sm font-medium">Deskripsi</label>
-						<Input id="deskripsi" name="deskripsi" />
+						<Input id="deskripsi" name="deskripsi" defaultValue={state?.inputs?.deskripsi || ""} />
 					</div>
 
 					{!state?.success && state?.message && (

@@ -21,7 +21,7 @@ export async function createPenerbit(prevState: unknown, formData: FormData) {
 	const telp_penerbit = formData.get("telp_penerbit") as string;
 	const email_penerbit = formData.get("email_penerbit") as string;
 	const deskripsi = formData.get("deskripsi") as string;
-	
+
 	const inputs = { penerbit_buku, alamat_penerbit, telp_penerbit, email_penerbit, deskripsi };
 
 	try {
@@ -30,11 +30,11 @@ export async function createPenerbit(prevState: unknown, formData: FormData) {
 			body: JSON.stringify(inputs),
 		});
 		const result = await res.json();
-		
+
 		if (!res.ok || result.error) {
 			return { success: false, message: result.msg || "Failed to create", inputs };
 		}
-		
+
 		revalidatePath("/dashboard/penerbit");
 		return { success: true, message: "Created successfully" };
 	} catch (error) {
@@ -58,11 +58,11 @@ export async function updatePenerbit(prevState: unknown, formData: FormData) {
 			body: JSON.stringify({ id, ...inputs }),
 		});
 		const result = await res.json();
-		
+
 		if (!res.ok || result.error) {
 			return { success: false, message: result.msg || "Failed to update", inputs };
 		}
-		
+
 		revalidatePath("/dashboard/penerbit");
 		return { success: true, message: "Updated successfully" };
 	} catch (error) {
@@ -77,7 +77,7 @@ export async function deletePenerbit(id: string) {
 			body: JSON.stringify({ id }),
 		});
 		const result = await res.json();
-		
+
 		if (res.ok && !result.error) {
 			revalidatePath("/dashboard/penerbit");
 			return { success: true, message: "Deleted successfully" };

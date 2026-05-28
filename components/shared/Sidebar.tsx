@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
 
 const NAV_ITEMS = [
-	{ href: "/dashboard/buku", label: "Buku", icon: Book },
 	{ href: "/dashboard/jenis-buku", label: "Jenis Buku", icon: Book },
 	{ href: "/dashboard/penulis", label: "Penulis", icon: Users },
 	{ href: "/dashboard/penerbit", label: "Penerbit", icon: Building },

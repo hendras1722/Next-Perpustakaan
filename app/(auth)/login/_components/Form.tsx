@@ -21,7 +21,7 @@ export default function LoginForm() {
 
 	useEffect(() => {
 		if (state?.success) {
-			router.push("/dashboard/buku");
+			router.push("/dashboard/jenis-buku");
 			router.refresh();
 		}
 	}, [state, router]);

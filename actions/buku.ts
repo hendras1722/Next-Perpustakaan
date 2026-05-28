@@ -1,11 +1,11 @@
 "use server";
 
 import { fetchApi } from "@/utils/api";
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export async function getBuku() {
 	try {
-		const res = await fetchApi("/api/v1/admin/buku", {
+		const res = await fetchApi("/api/v1/admin/buku/jenbuk", {
 			next: { tags: ["buku"] },
 		});
 		const result = await res.json();
@@ -18,7 +18,7 @@ export async function getBuku() {
 
 export async function getBukuById(id: string) {
 	try {
-		const res = await fetchApi(`/api/v1/admin/buku/${id}`, {
+		const res = await fetchApi(`/api/v1/admin/buku/jenbuk/${id}`, {
 			next: { tags: ["buku"] },
 		});
 		return await res.json();
@@ -53,7 +53,6 @@ export async function getPublicBukuById(id: string) {
 	}
 }
 
-import { revalidatePath } from "next/cache";
 
 export async function createBuku(prevState: unknown, formData: FormData) {
 	const judul_buku = formData.get("judul_buku") as string;
@@ -75,11 +74,11 @@ export async function createBuku(prevState: unknown, formData: FormData) {
 			body: JSON.stringify(inputs),
 		});
 		const result = await res.json();
-		
+
 		if (!res.ok || result.error) {
 			return { success: false, message: result.msg || "Failed to create", inputs };
 		}
-		
+
 		revalidatePath("/dashboard/buku");
 		revalidatePath("/buku");
 		return { success: true, message: "Created successfully" };
@@ -109,11 +108,11 @@ export async function updateBuku(prevState: unknown, formData: FormData) {
 			body: JSON.stringify({ id, ...inputs }),
 		});
 		const result = await res.json();
-		
+
 		if (!res.ok || result.error) {
 			return { success: false, message: result.msg || "Failed to update", inputs };
 		}
-		
+
 		revalidatePath("/dashboard/buku");
 		revalidatePath("/buku");
 		return { success: true, message: "Updated successfully" };
@@ -129,11 +128,11 @@ export async function deleteBuku(id: string) {
 			body: JSON.stringify({ id }),
 		});
 		const result = await res.json();
-		
+
 		if (!res.ok || result.error) {
 			return { success: false, message: result.msg || "Failed to delete" };
 		}
-		
+
 		revalidatePath("/dashboard/buku");
 		revalidatePath("/buku");
 		return { success: true, message: "Deleted successfully" };

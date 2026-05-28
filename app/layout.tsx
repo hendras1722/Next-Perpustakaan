@@ -30,7 +30,7 @@ export default function RootLayout({
 					rel="stylesheet"
 				/>
 			</head>
-			<body className="min-h-screen">
+			<body className="min-h-screen" cz-shortcut-listen="true">
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"

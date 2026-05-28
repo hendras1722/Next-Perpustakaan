@@ -36,7 +36,7 @@ Aplikasi ini dibagi menjadi beberapa _route groups_ utama untuk memudahkan organ
 ## 🔗 Repository & Demo
 
 - **Repository**: [https://github.com/hendras1722/Next-Perpustakaan](https://github.com/hendras1722/Next-Perpustakaan)
-- **Demo**: *(Tambahkan link demo di sini jika sudah di-deploy)*
+- **Demo**: [Video Project Perpustakaan](https://drive.google.com/file/d/1evATogHWP8VAv5tJdd_GBgY71hzCHJiP/view?usp=sharing)
 
 ---
 
